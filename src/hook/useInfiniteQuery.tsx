@@ -1,7 +1,11 @@
-import { useInfiniteQuery,UseInfiniteQueryOptions , UseInfiniteQueryResult} from "@tanstack/react-query";
+import {
+  useInfiniteQuery,
+  UseInfiniteQueryOptions,
+  UseInfiniteQueryResult,
+} from "@tanstack/react-query";
 
 export const QueryInfiniteService = <TData,>(
-  queryCb: (pageParams:number) => Promise<TData>,
+  queryCb: (pageParams: number) => Promise<TData>,
   queryKey: unknown[],
   totalItems: number
 ) => {
@@ -11,9 +15,7 @@ export const QueryInfiniteService = <TData,>(
     initialPageParam: 0,
     getNextPageParam: (lastPage, allPages) => {
       const totalPages = Math.ceil(totalItems / 10);
-      return allPages?.length < totalPages - 1
-        ? (allPages.length ) * 10
-        : undefined;
+      return allPages?.length < totalPages ? (allPages.length) * 10 : undefined;
     },
   });
 };
