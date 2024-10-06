@@ -12,7 +12,7 @@ export const QueryInfiniteService = <TData,>(
     getNextPageParam: (lastPage, allPages) => {
       const totalPages = Math.ceil(totalItems / 10);
       return allPages?.length < totalPages - 1
-        ? (allPages.length + 1) * 10
+        ? (allPages.length ) * 10
         : undefined;
     },
   });

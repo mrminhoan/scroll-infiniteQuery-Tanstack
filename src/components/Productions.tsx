@@ -25,7 +25,6 @@ function Productions() {
   } = QueryInfiniteService(fetchProductService, ["products"], totalItems);
 
   const allRows = data ? data.pages.flatMap((d) => d.products) : [];
-  console.log({ allRows });
 
 
   const rowVirtualizer = useVirtualizer({
@@ -37,7 +36,7 @@ function Productions() {
 
   useEffect(() => {
     const [lastItem] = [...rowVirtualizer.getVirtualItems()].reverse();
-
+    console.log({lastItem, getVirtualItems: rowVirtualizer.getVirtualItems()})
     if (!lastItem) {
       return;
     }
